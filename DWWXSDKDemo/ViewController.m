@@ -23,14 +23,24 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     DWWXSDK *wxsdk = [DWWXSDK wxSDK];
-    
-    /** 登录授权 */
-    [wxsdk dw_wxLoginOAuthWXAppid:@"wxd21cf7d764a8a393" wxSecret:@"88704af549141ff62c5b1413f1697981" wxState:@"vip.dwang" successBlock:^(DWWeChatProfileModel *profileModel) {
-        NSLog(@"%@\n%@\n%@", profileModel.nickname, profileModel.headimgurl, profileModel.unionid);
-    } errorBlock:^(NSError *error, NSInteger errcode, NSString *errmsg) {
-        NSLog(@"%@\n%ld\n%@", error, errcode, errmsg);
+
+//    [wxsdk dw_wxShareMsg:@"测试分享文本" wxShareScene:DWWXShareSession wxShareSuccess:^(BOOL success) {
+//        NSLog(@"分享成功");
+//    } wxShareResultError:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+//        NSLog(@"%ld\n%@\n%@", operatingResult, error, errorMsg);
+//    }];
+    [wxsdk dw_wxShareImage:[UIImage imageNamed:@"bg"] wxFilePath:[[NSBundle mainBundle] pathForResource:@"shareImage" ofType:@"jpg"] wxImageTitle:@"测试分享图片" wxImageDescription:@"测试分享图片" wxShareScene:DWWXShareTimeline wxShareSuccess:^(BOOL success) {
+        NSLog(@"分享成功");
+    } wxShareResultError:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        NSLog(@"%ld\n%@\n%@", operatingResult, error, errorMsg);
     }];
-//    
+//    /** 登录授权 */
+//    [wxsdk dw_wxLoginOAuthWXAppid:@"wxd21cf7d764a8a393" wxSecret:@"88704af549141ff62c5b1413f1697981" wxState:@"vip.dwang" successBlock:^(DWWeChatProfileModel *profileModel) {
+//        NSLog(@"%@\n%@\n%@", profileModel.nickname, profileModel.headimgurl, profileModel.unionid);
+//    } errorBlock:^(NSError *error, NSInteger errcode, NSString *errmsg) {
+//        NSLog(@"%@\n%ld\n%@", error, errcode, errmsg);
+//    }];
+//
 //    /** 单独获取用户信息 */
 //    [wxsdk dw_wxLoginUserInfoWXAppid:@"wxd21cf7d764a8a393" successBlock:^(DWWeChatProfileModel *profileModel) {
 //        NSLog(@"%@\n%@\n%@", profileModel.nickname, profileModel.headimgurl, profileModel.unionid);

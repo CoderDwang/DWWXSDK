@@ -93,14 +93,14 @@
     NSString *nonce_str = [NSString dw_obtainRandomNumber];
     NSString *spbill_create_ip = [NSString dw_obtainIPAddress];
     NSString *string = [NSString stringWithFormat:@"appid=%@&body=%@&mch_id=%@&nonce_str=%@&notify_url=%@&out_trade_no=%@&spbill_create_ip=%@&total_fee=%d&trade_type=APP",
-                                                    appid,
-                                                    body,
-                                                    mch_id,
-                                                    nonce_str,
-                                                    notify_url,
-                                                    out_trade_no,
-                                                    spbill_create_ip,
-                                                    total_fee];
+                        appid,
+                        body,
+                        mch_id,
+                        nonce_str,
+                        notify_url,
+                        out_trade_no,
+                        spbill_create_ip,
+                        total_fee];
     NSString *stringSignTemp = [NSString stringWithFormat:@"%@&key=%@",string,partnerKey];
     NSString *sign = [NSString dw_md5String:stringSignTemp];
     NSString *xmlString = [NSString dw_obtainWXPayXmlAppid:appid mch_id:mch_id nonce_str:nonce_str sign:sign body:body out_trade_no:out_trade_no total_fee:total_fee spbill_create_ip:spbill_create_ip notify_url:notify_url trade_type:@"APP"];
@@ -112,10 +112,10 @@
     self.partnerKey = partnerKey;
     NSString *nonce_str = [NSString dw_obtainRandomNumber];
     NSString *string = [NSString stringWithFormat:@"appid=%@&mch_id=%@&nonce_str=%@&out_trade_no=%@",
-                                                    appid,
-                                                    mch_id,
-                                                    nonce_str,
-                                                    out_trade_no];
+                        appid,
+                        mch_id,
+                        nonce_str,
+                        out_trade_no];
     NSString *stringSignTemp = [NSString stringWithFormat:@"%@&key=%@",string,partnerKey];
     NSString *sign = [NSString dw_md5String:stringSignTemp];
     NSString *xmlString = [NSString dw_obtainWXQueryOrderXmlAppid:appid mch_id:mch_id nonce_str:nonce_str out_trade_no:out_trade_no sign:sign];
@@ -191,13 +191,13 @@
                             result(operatingResult, error, errorMsg);
                         };
                     }else {
-                       if ([weChatModel.err_code isEqualToString:@"SYSTEMERROR"]) {
+                        if ([weChatModel.err_code isEqualToString:@"SYSTEMERROR"]) {
                             result(DWWXPayResultTypeSystemError, weChatModel.err_code, @"系统异常，请用相同参数重新调用");
-                       }else if ([weChatModel.err_code isEqualToString:@"INVALID_REQUEST"]){
-                           result(DWWXPayResultTypeUnknown, weChatModel.err_code, @"无效的请求");
-                       }else {
-                           result(DWWXPayResultTypeUnknown, weChatModel.err_code, weChatModel.err_code_des);
-                       }
+                        }else if ([weChatModel.err_code isEqualToString:@"INVALID_REQUEST"]){
+                            result(DWWXPayResultTypeUnknown, weChatModel.err_code, @"无效的请求");
+                        }else {
+                            result(DWWXPayResultTypeUnknown, weChatModel.err_code, weChatModel.err_code_des);
+                        }
                     }
                 }else {
                     result(DWWXPayResultTypeUnknown, weChatModel.return_msg, @"返回信息，如非空，为错误原因");
@@ -227,8 +227,140 @@
     };
 }
 
+#pragma mark - 分享文字类型至微信
+- (void)dw_wxShareMsg:(NSString *)wxMsg wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError{
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.text = wxMsg;
+    msgReq.bText = YES;
+    msgReq.scene = wxShareScene;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
+#pragma mark - 分享图片类型至微信
+- (void)dw_wxShareImage:(UIImage *)wxImage wxFilePath:(NSString *)wxFilePath wxImageTitle:(NSString *)wxImageTitle wxImageDescription:(NSString *)wxImageDescription wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    [mediaMsg setThumbImage:wxImage];
+    mediaMsg.title = wxImageTitle;
+    mediaMsg.description = wxImageDescription;
+    WXImageObject *imageOBJ = [WXImageObject object];
+    imageOBJ.imageData = [NSData dataWithContentsOfFile:wxFilePath];
+    mediaMsg.mediaObject = imageOBJ;
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = wxShareScene;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
+#pragma mark - 分享音乐类型至微信
+- (void)dw_wxShareMusic:(NSString *)wxMUString wxMDataUString:(NSString *)wxMDataUString wxMTitle:(NSString *)wxMTitle wxMDescription:(NSString *)wxMDescription wxMImage:(UIImage *)wxMImage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    mediaMsg.title = wxMTitle;
+    mediaMsg.description = wxMDescription;
+    [mediaMsg setThumbImage:wxMImage];
+    WXMusicObject *musicOBJ = [WXMusicObject object];
+    musicOBJ.musicUrl = wxMUString;
+    musicOBJ.musicLowBandUrl = wxMUString;
+    musicOBJ.musicDataUrl = wxMUString;
+    musicOBJ.musicLowBandDataUrl = wxMDataUString;
+    mediaMsg.mediaObject = musicOBJ;
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = wxShareScene;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
+#pragma mark - 分享视频至微信
+- (void)dw_wxShareVideo:(NSString *)wxVUString wxVTitle:(NSString *)wxVTitle wxVDescription:(NSString *)wxVDescription wxVImage:(UIImage *)wxVimage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    mediaMsg.title = wxVTitle;
+    mediaMsg.description = wxVDescription;
+    [mediaMsg setThumbImage:wxVimage];
+    WXVideoObject *videoOBJ = [WXVideoObject object];
+    videoOBJ.videoUrl = wxVUString;
+    videoOBJ.videoLowBandUrl = wxVUString;
+    mediaMsg.mediaObject = videoOBJ;
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = wxShareScene;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
+#pragma mark - 分享网页至微信
+- (void)dw_wxShareWeb:(NSString *)wxWUString wxWTitle:(NSString *)wxWTitle wxWDescription:(NSString *)wxWDescription wxWImage:(UIImage *)wxWImage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    mediaMsg.title = wxWTitle;
+    mediaMsg.description = wxWDescription;
+    [mediaMsg setThumbImage:wxWImage];
+    WXWebpageObject *webOBJ = [WXWebpageObject object];
+    webOBJ.webpageUrl = wxWUString;
+    mediaMsg.mediaObject = webOBJ;
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = wxShareScene;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
+#pragma mark - 分享小程序至微信好友
+- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    mediaMsg.title = wxMiniTitle;
+    mediaMsg.description = wxMiniDescription;
+    [mediaMsg setThumbImage:wxMiniImage];
+    WXMiniProgramObject *miniOBJ = [WXMiniProgramObject object];
+    miniOBJ.webpageUrl = wxWebPageUString;
+    miniOBJ.userName = wxMiniUserName;
+    miniOBJ.path = wxMiniPath;
+    mediaMsg.mediaObject = miniOBJ;
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = WXSceneSession;
+    [WXApi sendReq:msgReq];
+    self.shareSuccess = ^(BOOL success) {
+        wxShareSuccess(success);
+    };
+    self.wxOperatingErrorResult = ^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
+        wxShareResultError(operatingResult, error, errorMsg);
+    };
+}
+
 #pragma mark - 微信支付、订单查询、登录完成后回调
 - (void)onResp:(BaseResp *)resp {
+    NSLog(@"%@", NSStringFromClass([resp class]));
     if ([resp isKindOfClass:[PayResp class]]) {
         PayResp *payResp = (PayResp *)resp;
         switch (payResp.errCode) {
@@ -239,7 +371,7 @@
             }break;
             case WXErrCodeUserCancel: {
                 if (self.wxOperatingErrorResult) {
-                    self.wxOperatingErrorResult(DWWXPayResultTypeCancel, payResp.errStr, @"用户点击取消并返回");
+                    self.wxOperatingErrorResult(DWWXPayResultTypeUserCancel, payResp.errStr, @"用户点击取消并返回");
                 }
             }
                 break;
@@ -282,6 +414,29 @@
                 }
                 break;
         }
+    }else if ([resp isKindOfClass:[SendMessageToWXResp class]] ||[resp isKindOfClass:[WXMediaMessage class]]) {
+        switch (resp.errCode) {
+            case WXSuccess:
+                if (self.shareSuccess) {
+                    self.shareSuccess(YES);
+                }
+                break;
+            case WXErrCodeUserCancel:
+                if (self.wxOperatingErrorResult) {
+                    self.wxOperatingErrorResult(DWWXShareResultTypeUserCancel, resp.errStr, @"用户点击取消并返回");
+                }
+                break;
+            case WXErrCodeSentFail:
+                if (self.wxOperatingErrorResult) {
+                    self.wxOperatingErrorResult(DWWXShareResultTypeSentFail, resp.errStr, @"发送失败");
+                }
+                break;
+            default:
+                if (self.wxOperatingErrorResult) {
+                    self.wxOperatingErrorResult(DWWXShareResultTypeUnknown, resp.errStr, [NSString stringWithFormat:@"其它原因导致分享失败,微信返回错误码:%d", resp.errCode]);
+                }
+                break;
+        }
     }
 }
 
@@ -302,7 +457,7 @@
 - (void)dw_obtainUserInfo:(NSString *)url {
     __weak __typeof(self)weakSelf = self;
     [self dw_getURLString:url successBlock:^(NSDictionary *successData) {
-       DWWeChatProfileModel *profileModel = [DWWeChatProfileModel weChatProfileModelWithDictionary:successData];
+        DWWeChatProfileModel *profileModel = [DWWeChatProfileModel weChatProfileModelWithDictionary:successData];
         if (!profileModel.errmsg && !profileModel.errcode) {
             if (weakSelf.wxProfileModel) {
                 weakSelf.wxProfileModel(profileModel);
@@ -334,11 +489,11 @@
                         if (!profileModel.errmsg && !profileModel.errcode) {
                             successBlock(profileModel);
                         }else {
-                                errorBlock(profileModel.errcode, profileModel.errmsg);
+                            errorBlock(profileModel.errcode, profileModel.errmsg);
                         }
                     }];
                 }else {
-                     errorBlock(oauthModel.errcode, oauthModel.errmsg);
+                    errorBlock(oauthModel.errcode, oauthModel.errmsg);
                 }
                 
             }];
@@ -363,10 +518,10 @@
         [self dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@", wxAppid, [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginRefreshToken"]] successBlock:^(NSDictionary *successData) {
             DWWeChatModel *oauthModel = [DWWeChatModel weChatModelWithDictionary:successData];
             if (!oauthModel.errmsg && !oauthModel.errcode) {
-            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.refresh_token forKey:@"DWWXLoginRefreshToken"];
-            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.access_token forKey:@"DWWXLoginAccessToken"];
-            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.openid forKey:@"DWWXLoginOpenid"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSUserDefaults standardUserDefaults] setObject:oauthModel.refresh_token forKey:@"DWWXLoginRefreshToken"];
+                [[NSUserDefaults standardUserDefaults] setObject:oauthModel.access_token forKey:@"DWWXLoginAccessToken"];
+                [[NSUserDefaults standardUserDefaults] setObject:oauthModel.openid forKey:@"DWWXLoginOpenid"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 successBlock(oauthModel.access_token, oauthModel.expires_in, oauthModel.refresh_token, oauthModel.openid, oauthModel.scope);
             }else {
                 errorBlock(oauthModel.errcode, oauthModel.errmsg);
@@ -401,6 +556,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DWWXLoginOpenid"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 
 @end
 
@@ -506,7 +662,7 @@
     ifc.ifc_buf = buffer;
     if (ioctl(sockfd,SIOCGIFCONF, &ifc) >= 0) {
         for (ptr = buffer; ptr < buffer + ifc.ifc_len; ) {
-                    ifr = (struct ifreq *)ptr;
+            ifr = (struct ifreq *)ptr;
             int len =sizeof(struct sockaddr);
             if (ifr->ifr_addr.sa_len > len) {
                 len = ifr->ifr_addr.sa_len;
@@ -534,25 +690,25 @@
 }
 + (NSString *)dw_obtainWXPayXmlAppid:(NSString *)appid mch_id:(NSString *)mch_id nonce_str:(NSString *)nonce_str sign:(NSString *)sign body:(NSString *)body out_trade_no:(NSString *)out_trade_no total_fee:(int)total_fee spbill_create_ip:(NSString *)spbill_create_ip notify_url:(NSString *)notify_url trade_type:(NSString *)trade_type {
     NSString *xmlString = [NSString stringWithFormat:@"<xml><appid>%@</appid><body>%@</body><mch_id>%@</mch_id><nonce_str>%@</nonce_str><notify_url>%@</notify_url><out_trade_no>%@</out_trade_no><spbill_create_ip>%@</spbill_create_ip><total_fee>%d</total_fee><trade_type>%@</trade_type><sign>%@</sign></xml>",
-                                                           appid,
-                                                           body,
-                                                           mch_id,
-                                                           nonce_str,
-                                                           notify_url,
-                                                           out_trade_no,
-                                                           spbill_create_ip,
-                                                           total_fee,
-                                                           trade_type,
-                                                            sign];
+                           appid,
+                           body,
+                           mch_id,
+                           nonce_str,
+                           notify_url,
+                           out_trade_no,
+                           spbill_create_ip,
+                           total_fee,
+                           trade_type,
+                           sign];
     return [NSString stringWithString:xmlString];
 }
 + (NSString *)dw_obtainWXQueryOrderXmlAppid:(NSString *)appid mch_id:(NSString *)mch_id nonce_str:(NSString *)nonce_str out_trade_no:(NSString *)out_trade_no sign:(NSString *)sign {
     NSString *xmlString = [NSString stringWithFormat:@"<xml><appid>%@</appid><mch_id>%@</mch_id><nonce_str>%@</nonce_str><out_trade_no>%@</out_trade_no><sign>%@</sign></xml>",
-                                                           appid,
-                                                           mch_id,
-                                                           nonce_str,
-                                                           out_trade_no,
-                                                           sign];
+                           appid,
+                           mch_id,
+                           nonce_str,
+                           out_trade_no,
+                           sign];
     return [NSString stringWithString:xmlString];
 }
 @end

@@ -17,6 +17,15 @@ typedef enum : NSUInteger {
     DWWXOrderquery
 } DWWXRequestType;
 
+typedef enum : NSUInteger {
+    /** 发送到聊天界面 */
+    DWWXShareSession,
+    /** 发送到朋友圈 */
+    DWWXShareTimeline,
+    /** 添加到微信收藏 */
+    DWWXShareFavorite,
+} DWWXShareScene;
+
 typedef NS_ENUM(NSUInteger, DWWXOperatingResult) {
     /** 转入退款 */
     DWWXOrderqueryResultTypeRefund = 0,
@@ -46,7 +55,7 @@ typedef NS_ENUM(NSUInteger, DWWXOperatingResult) {
     DWWXOrderqueryResultTypeUnknown,
     
     /** 用户点击取消并返回 */
-    DWWXPayResultTypeCancel,
+    DWWXPayResultTypeUserCancel,
     
     /** 发送失败 */
     DWWXPayResultTypeSentFail,
@@ -64,7 +73,16 @@ typedef NS_ENUM(NSUInteger, DWWXOperatingResult) {
     DWWXPayResultTypeUnknown,
     
     /** 系统异常 */
-    DWWXPayResultTypeSystemError
+    DWWXPayResultTypeSystemError,
+    
+    /** 用户点击取消并返回 */
+    DWWXShareResultTypeUserCancel,
+    
+    /** 发送失败 */
+    DWWXShareResultTypeSentFail,
+    
+    /** 其它原因 */
+    DWWXShareResultTypeUnknown
 };
 
 @interface DWWXSDK : NSObject<WXApiDelegate>
@@ -78,9 +96,14 @@ typedef void (^DWWXOperatingErrorResult)(DWWXOperatingResult operatingResult, NS
 
 /** 登录成功获取用户信息的回调 */
 typedef void (^DWWXLoginSuccess)(DWWeChatProfileModel *profileModel);
+/** 登录失败的回调 */
 typedef void (^DWWXLoginErrorResult)(NSError *error, NSInteger errcode, NSString *errmsg);
 @property(nonatomic, copy) DWWXLoginSuccess wxProfileModel;
 @property(nonatomic, copy) DWWXLoginErrorResult wxLoginErrorResult;
+
+/** 分享成功的回调 */
+typedef void (^DWShareSuccess)(BOOL success);
+@property(nonatomic, copy) DWShareSuccess shareSuccess;
 
 /**
  *  单例创建支付对象
@@ -169,6 +192,83 @@ typedef void (^DWWXLoginErrorResult)(NSError *error, NSInteger errcode, NSString
  @param errorBlock 刷新失败的block
  */
 - (void)dw_wxLoginUpDataAccessTokenWXAppid:(NSString *)wxAppid successBlock:(void(^)(NSString *access_token, CGFloat expires_in, NSString *refresh_token, NSString *openid, NSString *scope))successBlock errorBlock:(void(^)(NSInteger errcode, NSString *errmsg))errorBlock;
+
+/**
+ 分享文本至微信
+
+ @param wxMsg 分享的文字内容
+ @param wxShareScene 分享的目标场景
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareMsg:(NSString *)wxMsg wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+
+/**
+ 分享图片至微信
+
+ @param wxImage 缩略图
+ @param wxFilePath 图片真实数据内容/大小不能超过10M
+ @param wxImageTitle 标题
+ @param wxImageDescription 描述
+ @param wxShareScene 分享的目标场景
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareImage:(UIImage *)wxImage wxFilePath:(NSString *)wxFilePath wxImageTitle:(NSString *)wxImageTitle wxImageDescription:(NSString *)wxImageDescription wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+
+/**
+ 分享音乐至微信
+
+ @param wxMUString 音乐网页的url地址
+ @param wxMDataUString 音乐数据url地址
+ @param wxMTitle 标题
+ @param wxMDescription 描述
+ @param wxMImage 缩略图
+ @param wxShareScene 分享的目标场景
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareMusic:(NSString *)wxMUString wxMDataUString:(NSString *)wxMDataUString wxMTitle:(NSString *)wxMTitle wxMDescription:(NSString *)wxMDescription wxMImage:(UIImage *)wxMImage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+
+/**
+ 分享视频至微信
+
+ @param wxVUString 视频网页的url地址
+ @param wxVTitle 标题
+ @param wxVDescription 描述
+ @param wxVimage 缩略图
+ @param wxShareScene 分享的目标场景
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareVideo:(NSString *)wxVUString wxVTitle:(NSString *)wxVTitle wxVDescription:(NSString *)wxVDescription wxVImage:(UIImage *)wxVimage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+
+/**
+ 分享网页至微信
+
+ @param wxWUString 网页的url地址
+ @param wxWTitle 标题
+ @param wxWDescription 描述
+ @param wxWImage 缩略图
+ @param wxShareScene 分享的目标场景
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareWeb:(NSString *)wxWUString wxWTitle:(NSString *)wxWTitle wxWDescription:(NSString *)wxWDescription wxWImage:(UIImage *)wxWImage wxShareScene:(DWWXShareScene)wxShareScene wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+
+/**
+ 分享小程序至微信好友/目前仅支持分享小程序类型消息至会话。
+
+ @param wxWebPageUString 低版本网页链接
+ @param wxMiniUserName 小程序username
+ @param wxMiniPath 小程序页面的路径
+ @param wxMiniTitle 标题
+ @param wxMiniDescription 描述
+ @param wxMiniImage 缩略图
+ @param wxShareSuccess 分享成功的回调
+ @param wxShareResultError 分享失败的回调
+ */
+- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
 
 /** 退出微信登录后需要清除UserDefaults中存储的内容 */
 + (void)dw_removeAllWXLoginUserDefaultsObjects;
