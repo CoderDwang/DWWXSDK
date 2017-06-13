@@ -1,3 +1,5 @@
+[![GitHub stars](https://img.shields.io/github/stars/dwanghello/DWWXSDK.svg)](https://github.com/asiosldh/DWWXSDK/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/dwanghello/DWWXSDK.svg)](https://github.com/asiosldh/DWWXSDK/forkgazers)
 # DWWXSDK
 ### 此工程基于Xcode8.3.3创建，低版本Xcode打开可能会无法使用
 ### *此文件基于<strong>微信SDK 1.7.7</strong>生产*
