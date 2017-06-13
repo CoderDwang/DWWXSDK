@@ -2,9 +2,12 @@
 //  DWWXPay.h
 //  DWWXPayDemo
 //
-//  Created by 四海全球 on 2017/6/12.
+//  Created by dwang.vip on 2017/6/12.
 //  Copyright © 2017年 dwang. All rights reserved.
-//
+
+
+/*****************************此文件基于微信SDK 1.7.7版本******************************/
+
 
 #import <Foundation/Foundation.h>
 #import "WXApi.h"
@@ -118,7 +121,7 @@ typedef void (^DWShareSuccess)(BOOL success);
  *  @param isEnableMTA  是否支持MTA数据上报
  *  @return 成功返回YES，失败返回NO。
  */
-- (BOOL)dw_registerApp:(NSString *)appid enableMTA:(BOOL)isEnableMTA;
++ (BOOL)dw_registerApp:(NSString *)appid enableMTA:(BOOL)isEnableMTA;
 
 /**
  向微信终端程序注册第三方应用。
@@ -126,7 +129,7 @@ typedef void (^DWShareSuccess)(BOOL success);
  @param appid 微信开发者ID
  @return 是否注册成功
  */
-- (BOOL)dw_registerApp:(NSString *)appid;
++ (BOOL)dw_registerApp:(NSString *)appid;
 
 /**
  获取付款需要的xml

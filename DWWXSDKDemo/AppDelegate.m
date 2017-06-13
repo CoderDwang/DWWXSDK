@@ -17,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[DWWXSDK wxSDK] dw_registerApp:@"wxd21cf7d764a8a393"];
+    NSLog(@"/*****************************此文件基于微信SDK 1.7.7版本******************************/");
+    NSLog(@"是否安装微信:%d", [DWWXSDK dw_isWXAppInstalled]);
+    NSLog(@"是否支持OpenApi:%d", [DWWXSDK dw_isWXAppSupportApi]);
+    NSLog(@"微信的itunes安装地址:%@", [DWWXSDK dw_getWXAppInstallUrl]);
+    NSLog(@"当前微信SDK的版本号:%@", [DWWXSDK dw_getApiVersion]);
+    [DWWXSDK dw_registerApp:@"wxd21cf7d764a8a393"];
     return YES;
 }
 
