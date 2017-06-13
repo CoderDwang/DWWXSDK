@@ -17,16 +17,6 @@
 		8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2B61EEFB78400DFFBD5 /* ViewController.m */; };
 		8F33E2C71EF00FF000DFFBD5 /* shareImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */; };
 		8F33E2CB1EF02E3D00DFFBD5 /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2CA1EF02E3D00DFFBD5 /* DWWXSDK.m */; };
-		8FA1BDE81EEE294200989ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE71EEE294200989ECA /* UIKit.framework */; };
-		8FA1BDEA1EEE294800989ECA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE91EEE294800989ECA /* CFNetwork.framework */; };
-		8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDEB1EEE295400989ECA /* libcurses.tbd */; };
-		8FA1BDEE1EEE295B00989ECA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDED1EEE295B00989ECA /* Security.framework */; };
-		8FA1BDF01EEE296500989ECA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDEF1EEE296500989ECA /* libc++.tbd */; };
-		8FA1BDF21EEE296F00989ECA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF11EEE296F00989ECA /* libz.tbd */; };
-		8FA1BDF41EEE297800989ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF31EEE297800989ECA /* Foundation.framework */; };
-		8FA1BDF61EEE298400989ECA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF51EEE298400989ECA /* CoreTelephony.framework */; };
-		8FA1BDF81EEE299B00989ECA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF71EEE299B00989ECA /* SystemConfiguration.framework */; };
-		8FA1BE051EEE2ABA00989ECA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BE041EEE2ABA00989ECA /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,16 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FA1BE051EEE2ABA00989ECA /* libsqlite3.0.tbd in Frameworks */,
-				8FA1BDF21EEE296F00989ECA /* libz.tbd in Frameworks */,
-				8FA1BDF01EEE296500989ECA /* libc++.tbd in Frameworks */,
-				8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */,
-				8FA1BDF61EEE298400989ECA /* CoreTelephony.framework in Frameworks */,
-				8FA1BDF81EEE299B00989ECA /* SystemConfiguration.framework in Frameworks */,
-				8FA1BDF41EEE297800989ECA /* Foundation.framework in Frameworks */,
-				8FA1BDEE1EEE295B00989ECA /* Security.framework in Frameworks */,
-				8FA1BDEA1EEE294800989ECA /* CFNetwork.framework in Frameworks */,
-				8FA1BDE81EEE294200989ECA /* UIKit.framework in Frameworks */,
 				7686EFA18CDCB094D0E4915F /* libPods-DWWXSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

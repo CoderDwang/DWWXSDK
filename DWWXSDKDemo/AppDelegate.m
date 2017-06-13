@@ -22,7 +22,7 @@
     NSLog(@"是否支持OpenApi:%d", [DWWXSDK dw_isWXAppSupportApi]);
     NSLog(@"微信的itunes安装地址:%@", [DWWXSDK dw_getWXAppInstallUrl]);
     NSLog(@"当前微信SDK的版本号:%@", [DWWXSDK dw_getApiVersion]);
-    [DWWXSDK dw_registerApp:@"wxd21cf7d764a8a393"];
+    [DWWXSDK dw_registerApp:@"appid"];
     return YES;
 }
 
