@@ -38,7 +38,7 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxd21cf7d764a8a393</string>
+				<string>appid</string>
 			</array>
 		</dict>
 	</array>

@@ -11,12 +11,12 @@
 		8F33E2B81EEFB78400DFFBD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */; };
 		8F33E2B91EEFB78400DFFBD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */; };
 		8F33E2BA1EEFB78400DFFBD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */; };
-		8F33E2BB1EEFB78400DFFBD5 /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */; };
 		8F33E2BC1EEFB78400DFFBD5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2AE1EEFB78400DFFBD5 /* Info.plist */; };
 		8F33E2BD1EEFB78400DFFBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2AF1EEFB78400DFFBD5 /* main.m */; };
 		8F33E2BE1EEFB78400DFFBD5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */; };
 		8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2B61EEFB78400DFFBD5 /* ViewController.m */; };
 		8F33E2C71EF00FF000DFFBD5 /* shareImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */; };
+		8F33E2CB1EF02E3D00DFFBD5 /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2CA1EF02E3D00DFFBD5 /* DWWXSDK.m */; };
 		8FA1BDE81EEE294200989ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE71EEE294200989ECA /* UIKit.framework */; };
 		8FA1BDEA1EEE294800989ECA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE91EEE294800989ECA /* CFNetwork.framework */; };
 		8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDEB1EEE295400989ECA /* libcurses.tbd */; };
@@ -35,8 +35,6 @@
 		8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F33E2A81EEFB78400DFFBD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F33E2AA1EEFB78400DFFBD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8F33E2AC1EEFB78400DFFBD5 /* DWWXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWXSDK.h; sourceTree = "<group>"; };
-		8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWXSDK.m; sourceTree = "<group>"; };
 		8F33E2AE1EEFB78400DFFBD5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F33E2AF1EEFB78400DFFBD5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -46,6 +44,8 @@
 		8F33E2B51EEFB78400DFFBD5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8F33E2B61EEFB78400DFFBD5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shareImage.jpg; sourceTree = "<group>"; };
+		8F33E2C91EF02E3D00DFFBD5 /* DWWXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWXSDK.h; sourceTree = "<group>"; };
+		8F33E2CA1EF02E3D00DFFBD5 /* DWWXSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWXSDK.m; sourceTree = "<group>"; };
 		8FA1BDCC1EEE28FD00989ECA /* DWWXSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWWXSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA1BDE71EEE294200989ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8FA1BDE91EEE294800989ECA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -84,13 +84,13 @@
 		8F33E2A31EEFB78400DFFBD5 /* DWWXSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8F33E2C81EF02E3D00DFFBD5 /* DWWXSDK */,
 				8F33E2A41EEFB78400DFFBD5 /* AppDelegate.h */,
 				8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */,
 				8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */,
 				8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */,
 				8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */,
 				8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */,
-				8F33E2AB1EEFB78400DFFBD5 /* DWWXSDK */,
 				8F33E2AE1EEFB78400DFFBD5 /* Info.plist */,
 				8F33E2AF1EEFB78400DFFBD5 /* main.m */,
 				8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */,
@@ -98,15 +98,6 @@
 				8F33E2B61EEFB78400DFFBD5 /* ViewController.m */,
 			);
 			path = DWWXSDKDemo;
-			sourceTree = "<group>";
-		};
-		8F33E2AB1EEFB78400DFFBD5 /* DWWXSDK */ = {
-			isa = PBXGroup;
-			children = (
-				8F33E2AC1EEFB78400DFFBD5 /* DWWXSDK.h */,
-				8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */,
-			);
-			path = DWWXSDK;
 			sourceTree = "<group>";
 		};
 		8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */ = {
@@ -119,6 +110,15 @@
 			);
 			path = OpenSDK1.7.7;
 			sourceTree = "<group>";
+		};
+		8F33E2C81EF02E3D00DFFBD5 /* DWWXSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8F33E2C91EF02E3D00DFFBD5 /* DWWXSDK.h */,
+				8F33E2CA1EF02E3D00DFFBD5 /* DWWXSDK.m */,
+			);
+			path = DWWXSDK;
+			sourceTree = SOURCE_ROOT;
 		};
 		8FA1BDC31EEE28FD00989ECA = {
 			isa = PBXGroup;
@@ -228,7 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F33E2BB1EEFB78400DFFBD5 /* DWWXSDK.m in Sources */,
+				8F33E2CB1EF02E3D00DFFBD5 /* DWWXSDK.m in Sources */,
 				8F33E2BD1EEFB78400DFFBD5 /* main.m in Sources */,
 				8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */,
 				8F33E2B71EEFB78400DFFBD5 /* AppDelegate.m in Sources */,
