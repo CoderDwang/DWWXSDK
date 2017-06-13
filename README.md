@@ -6,8 +6,6 @@
 
 ### *如果感觉不错，请给个Star支持一下*
 #### *使用中如果遇到什么问题可以联系我*
-##### *[QQ:739814184|点击即可扫码添加](https://github.com/dwanghello/DWTransform/blob/master/QQ.png)* 
-##### *[微信:ai739814184|点击即可扫码添加](https://github.com/dwanghello/DWTransform/blob/master/WeChat.png)*
 ##### *QQ群:577506623*
 ![QQ群](https://github.com/dwanghello/DWTransform/blob/master/QQ群.png)
 ##### *e-mail:dwang.hello@outlook.com*
