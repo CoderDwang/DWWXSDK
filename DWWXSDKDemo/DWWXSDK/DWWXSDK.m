@@ -25,8 +25,19 @@
 @end
 
 @interface DWWXSDK ()
+
 /** 商户密钥 */
 @property(nonatomic, copy) NSString *partnerKey;
+
+/** 应用唯一标识，在微信开放平台提交应用审核通过后获得 */
+@property(nonatomic, copy) NSString *appid;
+
+/** 应用密钥AppSecret，在微信开放平台提交应用审核通过后获得 */
+@property(nonatomic, copy) NSString *secret;
+
+/** 微信返回的code */
+@property(nonatomic, copy) NSString *code;
+
 @end
 
 #define WXPayURLString @"https://api.mch.weixin.qq.com/pay/unifiedorder"
@@ -199,7 +210,24 @@
     [dataTask resume];
 }
 
-#pragma mark - 微信支付完成后回调
+
+#pragma mark - 微信登录
+- (void)dw_wxLoginOAuthWXAppid:(NSString *)wxAppid wxSecret:(NSString *)wxSecret wxState:(NSString *)wxState successBlock:(DWWXLoginSuccess)successBlock errorBlock:(DWWXLoginErrorResult)errorBlock {
+    self.appid = wxAppid;
+    self.secret = wxSecret;
+    SendAuthReq* req = [[SendAuthReq alloc ] init];
+    req.scope = @"snsapi_userinfo";
+    req.state = wxState;
+    [WXApi sendReq:req];
+    self.wxProfileModel = ^(DWWeChatProfileModel *profileModel) {
+        successBlock(profileModel);
+    };
+    self.wxLoginErrorResult = ^(NSError *error, NSInteger errcode, NSString *errmsg) {
+        errorBlock(error, errcode, errmsg);
+    };
+}
+
+#pragma mark - 微信支付、订单查询、登录完成后回调
 - (void)onResp:(BaseResp *)resp {
     if ([resp isKindOfClass:[PayResp class]]) {
         PayResp *payResp = (PayResp *)resp;
@@ -217,28 +245,161 @@
                 break;
             case WXErrCodeCommon: {
                 if (self.wxOperatingErrorResult) {
-                    self.wxOperatingErrorResult(WXErrCodeCommon, payResp.errStr, @"普通错误类型");
+                    self.wxOperatingErrorResult(DWWXPayResultTypeCommon, payResp.errStr, @"普通错误类型");
                 }
             }break;
             case WXErrCodeSentFail: {
                 if (self.wxOperatingErrorResult) {
-                    self.wxOperatingErrorResult(WXErrCodeSentFail, payResp.errStr, @"发送失败");
+                    self.wxOperatingErrorResult(DWWXPayResultTypeSentFail, payResp.errStr, @"发送失败");
                 }
             }break;
             case WXErrCodeAuthDeny: {
                 if (self.wxOperatingErrorResult) {
-                    self.wxOperatingErrorResult(WXErrCodeAuthDeny, payResp.errStr, @"授权失败");
+                    self.wxOperatingErrorResult(DWWXPayResultTypeAuthDeny, payResp.errStr, @"授权失败");
                 }
             }break;
             case WXErrCodeUnsupport: {
                 if (self.wxOperatingErrorResult) {
-                    self.wxOperatingErrorResult(WXErrCodeUnsupport, payResp.errStr, @"微信不支持");
+                    self.wxOperatingErrorResult(DWWXPayResultTypeUnsupport, payResp.errStr, @"微信不支持");
                 }
             }break;
+            default:{
+                if (self.wxOperatingErrorResult) {
+                    self.wxOperatingErrorResult(DWWXPayResultTypeUnknown, payResp.errStr, @"其它原因");
+                }
+            }break;
+        }
+    }else if ([resp isKindOfClass:[SendAuthResp class]]) {
+        SendAuthResp *sendAuthResp = (SendAuthResp *)resp;
+        switch (sendAuthResp.errCode) {
+            case WXSuccess:
+                [self dw_obtainWXAccess_token:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code", self.appid, self.secret, sendAuthResp.code]];
+                break;
             default:
+                if (self.wxLoginErrorResult) {
+                    NSError *error = [NSError errorWithDomain:@"登录失败" code:-00001 userInfo:nil];
+                    self.wxLoginErrorResult(error, sendAuthResp.errCode, sendAuthResp.errStr);
+                }
                 break;
         }
     }
+}
+
+#pragma mark - 获取access_token
+- (void)dw_obtainWXAccess_token:(NSString *)url {
+    __weak __typeof(self)weakSelf = self;
+    [self dw_getURLString:url successBlock:^(NSDictionary *successData) {
+        DWWeChatModel *oauthModel = [DWWeChatModel weChatModelWithDictionary:successData];
+        [weakSelf dw_obtainUserInfo:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@", oauthModel.access_token, oauthModel.openid]];
+        [[NSUserDefaults standardUserDefaults] setObject:oauthModel.refresh_token forKey:@"DWWXLoginRefreshToken"];
+        [[NSUserDefaults standardUserDefaults] setObject:oauthModel.access_token forKey:@"DWWXLoginAccessToken"];
+        [[NSUserDefaults standardUserDefaults] setObject:oauthModel.openid forKey:@"DWWXLoginOpenid"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+}
+
+#pragma mark - 获取用户信息
+- (void)dw_obtainUserInfo:(NSString *)url {
+    __weak __typeof(self)weakSelf = self;
+    [self dw_getURLString:url successBlock:^(NSDictionary *successData) {
+       DWWeChatProfileModel *profileModel = [DWWeChatProfileModel weChatProfileModelWithDictionary:successData];
+        if (!profileModel.errmsg && !profileModel.errcode) {
+            if (weakSelf.wxProfileModel) {
+                weakSelf.wxProfileModel(profileModel);
+            }
+        }else {
+            if (weakSelf.wxLoginErrorResult) {
+                NSError *error = [NSError errorWithDomain:@"获取个人信息失败" code:-00001 userInfo:nil];
+                weakSelf.wxLoginErrorResult(error, profileModel.errcode, profileModel.errmsg);
+            }
+        }
+    }];
+}
+
+#pragma mark - 获取个人信息
+- (void)dw_wxLoginUserInfoWXAppid:(NSString *)wxAppid successBlock:(void(^)(DWWeChatProfileModel *profileModel))successBlock errorBlock:(void(^)(NSInteger errcode, NSString *errmsg))errorBlock {
+    __weak __typeof(self)weakSelf = self;
+    [self dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/auth?access_token=%@&openid=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"], [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginOpenid"]] successBlock:^(NSDictionary *successData) {
+        DWWeChatModel *oauthModel = [DWWeChatModel weChatModelWithDictionary:successData];
+        if (oauthModel.errcode != 0 && [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"]) {
+            [weakSelf dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@", wxAppid, [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginRefreshToken"]] successBlock:^(NSDictionary *successData) {
+                DWWeChatModel *oauthModel2 = [DWWeChatModel weChatModelWithDictionary:successData];
+                if (!oauthModel2.errmsg && !oauthModel2.errcode) {
+                    [[NSUserDefaults standardUserDefaults] setObject:oauthModel2.refresh_token forKey:@"DWWXLoginRefreshToken"];
+                    [[NSUserDefaults standardUserDefaults] setObject:oauthModel2.access_token forKey:@"DWWXLoginAccessToken"];
+                    [[NSUserDefaults standardUserDefaults] setObject:oauthModel2.openid forKey:@"DWWXLoginOpenid"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [weakSelf dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"], [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginOpenid"]] successBlock:^(NSDictionary *successData) {
+                        DWWeChatProfileModel *profileModel = [DWWeChatProfileModel weChatProfileModelWithDictionary:successData];
+                        if (!profileModel.errmsg && !profileModel.errcode) {
+                            successBlock(profileModel);
+                        }else {
+                                errorBlock(profileModel.errcode, profileModel.errmsg);
+                        }
+                    }];
+                }else {
+                     errorBlock(oauthModel.errcode, oauthModel.errmsg);
+                }
+                
+            }];
+        }else if (oauthModel.errcode != 0 && ![[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"]) {
+            errorBlock(oauthModel.errcode, oauthModel.errmsg);
+        }else {
+            [weakSelf dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"], [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginOpenid"]] successBlock:^(NSDictionary *successData) {
+                DWWeChatProfileModel *profileModel = [DWWeChatProfileModel weChatProfileModelWithDictionary:successData];
+                if (!profileModel.errmsg && !profileModel.errcode) {
+                    successBlock(profileModel);
+                }else {
+                    errorBlock(profileModel.errcode, profileModel.errmsg);
+                }
+            }];
+        }
+    }];
+}
+
+#pragma mark - 刷新或续期access_token使用
+- (void)dw_wxLoginUpDataAccessTokenWXAppid:(NSString *)wxAppid successBlock:(void(^)(NSString *access_token, CGFloat expires_in, NSString *refresh_token, NSString *openid, NSString *scope))successBlock errorBlock:(void(^)(NSInteger errcode, NSString *errmsg))errorBlock {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginAccessToken"]) {
+        [self dw_getURLString:[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@", wxAppid, [[NSUserDefaults standardUserDefaults] objectForKey:@"DWWXLoginRefreshToken"]] successBlock:^(NSDictionary *successData) {
+            DWWeChatModel *oauthModel = [DWWeChatModel weChatModelWithDictionary:successData];
+            if (!oauthModel.errmsg && !oauthModel.errcode) {
+            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.refresh_token forKey:@"DWWXLoginRefreshToken"];
+            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.access_token forKey:@"DWWXLoginAccessToken"];
+            [[NSUserDefaults standardUserDefaults] setObject:oauthModel.openid forKey:@"DWWXLoginOpenid"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+                successBlock(oauthModel.access_token, oauthModel.expires_in, oauthModel.refresh_token, oauthModel.openid, oauthModel.scope);
+            }else {
+                errorBlock(oauthModel.errcode, oauthModel.errmsg);
+            }
+        }];
+    }else {
+        errorBlock(NSIntegerMin, @"未进行过微信登录");
+    }
+}
+
+#pragma mark - get请求
+- (void)dw_getURLString:(NSString *)urlString successBlock:(void(^)(NSDictionary *successData))successBlock {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
+    [request setHTTPMethod:@"GET"];
+    __weak __typeof(self)weakSelf = self;
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            successBlock([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]);
+        }else {
+            if (weakSelf.wxLoginErrorResult) {
+                weakSelf.wxLoginErrorResult(error, error.code, error.domain);
+            }
+        }
+    }];
+    [dataTask resume];
+}
+
+#pragma mark - 退出微信登录后需要清除UserDefaults中存储的内容
++ (void)dw_removeAllWXLoginUserDefaultsObjects {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DWWXLoginRefreshToken"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DWWXLoginAccessToken"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DWWXLoginOpenid"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
@@ -252,6 +413,20 @@
     return self;
 }
 + (instancetype)weChatModelWithDictionary:(NSDictionary *)dict {
+    return [[self alloc] initWithDictionary:dict];
+}
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    //防止程序case
+}
+@end
+@implementation DWWeChatProfileModel
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
++ (instancetype)weChatProfileModelWithDictionary:(NSDictionary *)dict {
     return [[self alloc] initWithDictionary:dict];
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {

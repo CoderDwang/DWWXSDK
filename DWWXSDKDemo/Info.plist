@@ -25,6 +25,16 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
+			<string>vip.dwang.DWWXPayDemo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>vip.dwang</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>

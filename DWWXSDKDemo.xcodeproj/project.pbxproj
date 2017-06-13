@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8FA1BDD11EEE28FD00989ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1BDD01EEE28FD00989ECA /* main.m */; };
-		8FA1BDD41EEE28FD00989ECA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1BDD31EEE28FD00989ECA /* AppDelegate.m */; };
-		8FA1BDD71EEE28FD00989ECA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1BDD61EEE28FD00989ECA /* ViewController.m */; };
-		8FA1BDDA1EEE28FD00989ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA1BDD81EEE28FD00989ECA /* Main.storyboard */; };
-		8FA1BDDC1EEE28FD00989ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FA1BDDB1EEE28FD00989ECA /* Assets.xcassets */; };
-		8FA1BDDF1EEE28FD00989ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA1BDDD1EEE28FD00989ECA /* LaunchScreen.storyboard */; };
+		8F33E2B71EEFB78400DFFBD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */; };
+		8F33E2B81EEFB78400DFFBD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */; };
+		8F33E2B91EEFB78400DFFBD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */; };
+		8F33E2BA1EEFB78400DFFBD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */; };
+		8F33E2BB1EEFB78400DFFBD5 /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */; };
+		8F33E2BC1EEFB78400DFFBD5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2AE1EEFB78400DFFBD5 /* Info.plist */; };
+		8F33E2BD1EEFB78400DFFBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2AF1EEFB78400DFFBD5 /* main.m */; };
+		8F33E2BE1EEFB78400DFFBD5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */; };
+		8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2B61EEFB78400DFFBD5 /* ViewController.m */; };
 		8FA1BDE81EEE294200989ECA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE71EEE294200989ECA /* UIKit.framework */; };
 		8FA1BDEA1EEE294800989ECA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDE91EEE294800989ECA /* CFNetwork.framework */; };
 		8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDEB1EEE295400989ECA /* libcurses.tbd */; };
@@ -22,22 +25,26 @@
 		8FA1BDF41EEE297800989ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF31EEE297800989ECA /* Foundation.framework */; };
 		8FA1BDF61EEE298400989ECA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF51EEE298400989ECA /* CoreTelephony.framework */; };
 		8FA1BDF81EEE299B00989ECA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDF71EEE299B00989ECA /* SystemConfiguration.framework */; };
-		8FA1BE031EEE2A3700989ECA /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BDFF1EEE2A3700989ECA /* libWeChatSDK.a */; };
 		8FA1BE051EEE2ABA00989ECA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1BE041EEE2ABA00989ECA /* libsqlite3.0.tbd */; };
-		8FA1BE091EEE2D2500989ECA /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1BE081EEE2D2500989ECA /* DWWXSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8FA1BDCC1EEE28FD00989ECA /* DWWXPayDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWWXPayDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FA1BDD01EEE28FD00989ECA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8FA1BDD21EEE28FD00989ECA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8FA1BDD31EEE28FD00989ECA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8FA1BDD51EEE28FD00989ECA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8FA1BDD61EEE28FD00989ECA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8FA1BDD91EEE28FD00989ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8FA1BDDB1EEE28FD00989ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8FA1BDDE1EEE28FD00989ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8FA1BDE01EEE28FD00989ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F33E2A41EEFB78400DFFBD5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F33E2A81EEFB78400DFFBD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F33E2AA1EEFB78400DFFBD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F33E2AC1EEFB78400DFFBD5 /* DWWXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWXSDK.h; sourceTree = "<group>"; };
+		8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWXSDK.m; sourceTree = "<group>"; };
+		8F33E2AE1EEFB78400DFFBD5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F33E2AF1EEFB78400DFFBD5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		8F33E2B21EEFB78400DFFBD5 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		8F33E2B31EEFB78400DFFBD5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		8F33E2B41EEFB78400DFFBD5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		8F33E2B51EEFB78400DFFBD5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8F33E2B61EEFB78400DFFBD5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8FA1BDCC1EEE28FD00989ECA /* DWWXSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWWXSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA1BDE71EEE294200989ECA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8FA1BDE91EEE294800989ECA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8FA1BDEB1EEE295400989ECA /* libcurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurses.tbd; path = usr/lib/libcurses.tbd; sourceTree = SDKROOT; };
@@ -47,13 +54,7 @@
 		8FA1BDF31EEE297800989ECA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8FA1BDF51EEE298400989ECA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8FA1BDF71EEE299B00989ECA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		8FA1BDFF1EEE2A3700989ECA /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		8FA1BE001EEE2A3700989ECA /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		8FA1BE011EEE2A3700989ECA /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		8FA1BE021EEE2A3700989ECA /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		8FA1BE041EEE2ABA00989ECA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		8FA1BE071EEE2D2500989ECA /* DWWXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWXSDK.h; sourceTree = "<group>"; };
-		8FA1BE081EEE2D2500989ECA /* DWWXSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWXSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +67,7 @@
 				8FA1BDF01EEE296500989ECA /* libc++.tbd in Frameworks */,
 				8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */,
 				8FA1BDF61EEE298400989ECA /* CoreTelephony.framework in Frameworks */,
-				8FA1BE031EEE2A3700989ECA /* libWeChatSDK.a in Frameworks */,
+				8F33E2BE1EEFB78400DFFBD5 /* libWeChatSDK.a in Frameworks */,
 				8FA1BDF81EEE299B00989ECA /* SystemConfiguration.framework in Frameworks */,
 				8FA1BDF41EEE297800989ECA /* Foundation.framework in Frameworks */,
 				8FA1BDEE1EEE295B00989ECA /* Security.framework in Frameworks */,
@@ -78,10 +79,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F33E2A31EEFB78400DFFBD5 /* DWWXSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				8F33E2A41EEFB78400DFFBD5 /* AppDelegate.h */,
+				8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */,
+				8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */,
+				8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */,
+				8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */,
+				8F33E2AB1EEFB78400DFFBD5 /* DWWXSDK */,
+				8F33E2AE1EEFB78400DFFBD5 /* Info.plist */,
+				8F33E2AF1EEFB78400DFFBD5 /* main.m */,
+				8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */,
+				8F33E2B51EEFB78400DFFBD5 /* ViewController.h */,
+				8F33E2B61EEFB78400DFFBD5 /* ViewController.m */,
+			);
+			path = DWWXSDKDemo;
+			sourceTree = "<group>";
+		};
+		8F33E2AB1EEFB78400DFFBD5 /* DWWXSDK */ = {
+			isa = PBXGroup;
+			children = (
+				8F33E2AC1EEFB78400DFFBD5 /* DWWXSDK.h */,
+				8F33E2AD1EEFB78400DFFBD5 /* DWWXSDK.m */,
+			);
+			path = DWWXSDK;
+			sourceTree = "<group>";
+		};
+		8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */ = {
+			isa = PBXGroup;
+			children = (
+				8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */,
+				8F33E2B21EEFB78400DFFBD5 /* WechatAuthSDK.h */,
+				8F33E2B31EEFB78400DFFBD5 /* WXApi.h */,
+				8F33E2B41EEFB78400DFFBD5 /* WXApiObject.h */,
+			);
+			path = OpenSDK1.7.7;
+			sourceTree = "<group>";
+		};
 		8FA1BDC31EEE28FD00989ECA = {
 			isa = PBXGroup;
 			children = (
-				8FA1BDCE1EEE28FD00989ECA /* DWWXPayDemo */,
+				8F33E2A31EEFB78400DFFBD5 /* DWWXSDKDemo */,
 				8FA1BDCD1EEE28FD00989ECA /* Products */,
 				8FA1BDE61EEE294200989ECA /* Frameworks */,
 			);
@@ -90,35 +129,9 @@
 		8FA1BDCD1EEE28FD00989ECA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8FA1BDCC1EEE28FD00989ECA /* DWWXPayDemo.app */,
+				8FA1BDCC1EEE28FD00989ECA /* DWWXSDKDemo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8FA1BDCE1EEE28FD00989ECA /* DWWXPayDemo */ = {
-			isa = PBXGroup;
-			children = (
-				8FA1BE061EEE2D2500989ECA /* DWWeChatPay */,
-				8FA1BDFE1EEE2A3700989ECA /* OpenSDK1.7.7 */,
-				8FA1BDD21EEE28FD00989ECA /* AppDelegate.h */,
-				8FA1BDD31EEE28FD00989ECA /* AppDelegate.m */,
-				8FA1BDD51EEE28FD00989ECA /* ViewController.h */,
-				8FA1BDD61EEE28FD00989ECA /* ViewController.m */,
-				8FA1BDD81EEE28FD00989ECA /* Main.storyboard */,
-				8FA1BDDB1EEE28FD00989ECA /* Assets.xcassets */,
-				8FA1BDDD1EEE28FD00989ECA /* LaunchScreen.storyboard */,
-				8FA1BDE01EEE28FD00989ECA /* Info.plist */,
-				8FA1BDCF1EEE28FD00989ECA /* Supporting Files */,
-			);
-			path = DWWXPayDemo;
-			sourceTree = "<group>";
-		};
-		8FA1BDCF1EEE28FD00989ECA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8FA1BDD01EEE28FD00989ECA /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8FA1BDE61EEE294200989ECA /* Frameworks */ = {
@@ -138,32 +151,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8FA1BDFE1EEE2A3700989ECA /* OpenSDK1.7.7 */ = {
-			isa = PBXGroup;
-			children = (
-				8FA1BDFF1EEE2A3700989ECA /* libWeChatSDK.a */,
-				8FA1BE001EEE2A3700989ECA /* WechatAuthSDK.h */,
-				8FA1BE011EEE2A3700989ECA /* WXApi.h */,
-				8FA1BE021EEE2A3700989ECA /* WXApiObject.h */,
-			);
-			path = OpenSDK1.7.7;
-			sourceTree = "<group>";
-		};
-		8FA1BE061EEE2D2500989ECA /* DWWeChatPay */ = {
-			isa = PBXGroup;
-			children = (
-				8FA1BE071EEE2D2500989ECA /* DWWXSDK.h */,
-				8FA1BE081EEE2D2500989ECA /* DWWXSDK.m */,
-			);
-			path = DWWeChatPay;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8FA1BDCB1EEE28FD00989ECA /* DWWXPayDemo */ = {
+		8FA1BDCB1EEE28FD00989ECA /* DWWXSDKDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8FA1BDE31EEE28FD00989ECA /* Build configuration list for PBXNativeTarget "DWWXPayDemo" */;
+			buildConfigurationList = 8FA1BDE31EEE28FD00989ECA /* Build configuration list for PBXNativeTarget "DWWXSDKDemo" */;
 			buildPhases = (
 				8FA1BDC81EEE28FD00989ECA /* Sources */,
 				8FA1BDC91EEE28FD00989ECA /* Frameworks */,
@@ -173,9 +166,9 @@
 			);
 			dependencies = (
 			);
-			name = DWWXPayDemo;
+			name = DWWXSDKDemo;
 			productName = DWWXPayDemo;
-			productReference = 8FA1BDCC1EEE28FD00989ECA /* DWWXPayDemo.app */;
+			productReference = 8FA1BDCC1EEE28FD00989ECA /* DWWXSDKDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8FA1BDC71EEE28FD00989ECA /* Build configuration list for PBXProject "DWWXPayDemo" */;
+			buildConfigurationList = 8FA1BDC71EEE28FD00989ECA /* Build configuration list for PBXProject "DWWXSDKDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -207,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8FA1BDCB1EEE28FD00989ECA /* DWWXPayDemo */,
+				8FA1BDCB1EEE28FD00989ECA /* DWWXSDKDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -217,9 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FA1BDDF1EEE28FD00989ECA /* LaunchScreen.storyboard in Resources */,
-				8FA1BDDC1EEE28FD00989ECA /* Assets.xcassets in Resources */,
-				8FA1BDDA1EEE28FD00989ECA /* Main.storyboard in Resources */,
+				8F33E2BC1EEFB78400DFFBD5 /* Info.plist in Resources */,
+				8F33E2BA1EEFB78400DFFBD5 /* Main.storyboard in Resources */,
+				8F33E2B81EEFB78400DFFBD5 /* Assets.xcassets in Resources */,
+				8F33E2B91EEFB78400DFFBD5 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,30 +224,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FA1BDD71EEE28FD00989ECA /* ViewController.m in Sources */,
-				8FA1BE091EEE2D2500989ECA /* DWWXSDK.m in Sources */,
-				8FA1BDD41EEE28FD00989ECA /* AppDelegate.m in Sources */,
-				8FA1BDD11EEE28FD00989ECA /* main.m in Sources */,
+				8F33E2BB1EEFB78400DFFBD5 /* DWWXSDK.m in Sources */,
+				8F33E2BD1EEFB78400DFFBD5 /* main.m in Sources */,
+				8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */,
+				8F33E2B71EEFB78400DFFBD5 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8FA1BDD81EEE28FD00989ECA /* Main.storyboard */ = {
+		8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8FA1BDD91EEE28FD00989ECA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8FA1BDDD1EEE28FD00989ECA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8FA1BDDE1EEE28FD00989ECA /* Base */,
+				8F33E2A81EEFB78400DFFBD5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F33E2AA1EEFB78400DFFBD5 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -354,14 +348,14 @@
 		8FA1BDE41EEE28FD00989ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7T92Q33AK6;
-				INFOPLIST_FILE = DWWXPayDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DWWXSDKDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DWWXPayDemo/OpenSDK1.7.7",
+					"$(PROJECT_DIR)/DWWXSDKDemo/OpenSDK1.7.7",
 				);
 				OTHER_LDFLAGS = (
 					"-Objc",
@@ -375,14 +369,14 @@
 		8FA1BDE51EEE28FD00989ECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7T92Q33AK6;
-				INFOPLIST_FILE = DWWXPayDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DWWXSDKDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DWWXPayDemo/OpenSDK1.7.7",
+					"$(PROJECT_DIR)/DWWXSDKDemo/OpenSDK1.7.7",
 				);
 				OTHER_LDFLAGS = (
 					"-Objc",
@@ -396,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8FA1BDC71EEE28FD00989ECA /* Build configuration list for PBXProject "DWWXPayDemo" */ = {
+		8FA1BDC71EEE28FD00989ECA /* Build configuration list for PBXProject "DWWXSDKDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8FA1BDE11EEE28FD00989ECA /* Debug */,
@@ -405,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8FA1BDE31EEE28FD00989ECA /* Build configuration list for PBXNativeTarget "DWWXPayDemo" */ = {
+		8FA1BDE31EEE28FD00989ECA /* Build configuration list for PBXNativeTarget "DWWXSDKDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8FA1BDE41EEE28FD00989ECA /* Debug */,

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WXApi.h"
+@class DWWeChatProfileModel;
 
 typedef enum : NSUInteger {
     /** 微信支付 */
@@ -75,6 +76,11 @@ typedef void (^DWWXOperatingErrorResult)(DWWXOperatingResult operatingResult, NS
 @property(nonatomic, copy) DWWXOperatingSuccess wxPayOperatingSuccess;
 @property(nonatomic, copy) DWWXOperatingErrorResult wxOperatingErrorResult;
 
+/** 登录成功获取用户信息的回调 */
+typedef void (^DWWXLoginSuccess)(DWWeChatProfileModel *profileModel);
+typedef void (^DWWXLoginErrorResult)(NSError *error, NSInteger errcode, NSString *errmsg);
+@property(nonatomic, copy) DWWXLoginSuccess wxProfileModel;
+@property(nonatomic, copy) DWWXLoginErrorResult wxLoginErrorResult;
 
 /**
  *  单例创建支付对象
@@ -134,6 +140,39 @@ typedef void (^DWWXOperatingErrorResult)(DWWXOperatingResult operatingResult, NS
  @param result 失败
  */
 - (void)dw_wxRequestType:(DWWXRequestType)wxRequestType xmlString:(NSString *)xmlString success:(DWWXOperatingSuccess)success result:(DWWXOperatingErrorResult)result;
+
+/**
+ 微信登录
+
+ @param wxAppid 微信开放平台审核通过的应用APPID
+ @param wxSecret 应用密钥AppSecret，在微信开放平台提交应用审核通过后获得
+ @param wxState 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+ @param successBlock 登录成功后获取用户信息的block
+ @param errorBlock 登录失败的Block
+ */
+- (void)dw_wxLoginOAuthWXAppid:(NSString *)wxAppid wxSecret:(NSString *)wxSecret wxState:(NSString *)wxState successBlock:(DWWXLoginSuccess)successBlock errorBlock:(DWWXLoginErrorResult)errorBlock;
+
+/**
+ 获取个人信息
+
+ @param wxAppid 微信开放平台审核通过的应用APPID
+ @param successBlock 成功获取用户信息的block
+ @param errorBlock 信息获取失败,可能需要重新调起微信授权
+ */
+- (void)dw_wxLoginUserInfoWXAppid:(NSString *)wxAppid successBlock:(DWWXLoginSuccess)successBlock errorBlock:(void(^)(NSInteger errcode, NSString *errmsg))errorBlock;
+
+/**
+ 刷新或续期access_token使用
+
+ @param wxAppid 微信开放平台审核通过的应用APPID
+ @param successBlock 成功刷新或续期access_token的block
+ @param errorBlock 刷新失败的block
+ */
+- (void)dw_wxLoginUpDataAccessTokenWXAppid:(NSString *)wxAppid successBlock:(void(^)(NSString *access_token, CGFloat expires_in, NSString *refresh_token, NSString *openid, NSString *scope))successBlock errorBlock:(void(^)(NSInteger errcode, NSString *errmsg))errorBlock;
+
+/** 退出微信登录后需要清除UserDefaults中存储的内容 */
++ (void)dw_removeAllWXLoginUserDefaultsObjects;
+
 /** 检查是否安装微信 */
 + (BOOL)dw_isWXAppInstalled;
 
@@ -214,14 +253,83 @@ typedef void (^DWWXOperatingErrorResult)(DWWXOperatingResult operatingResult, NS
  */
 @property (copy, nonatomic) NSString *prepay_id;
 
+/***********************************以下为微信登录的数据模型*************************************/
+
+/** 接口调用凭证 */
+@property(nonatomic, copy) NSString *access_token;
+
+/** access_token接口调用凭证超时时间，单位（秒） */
+@property(nonatomic, assign) CGFloat expires_in;
+
+/** 用户刷新access_token */
+@property(nonatomic, copy) NSString *refresh_token;
+
+/** 授权用户唯一标识 */
+@property(nonatomic, copy) NSString *openid;
+
+/** 用户授权的作用域，使用逗号（,）分隔 */
+@property(nonatomic, copy) NSString *scope;
+
+/**  当且仅当该移动应用已获得该用户的userinfo授权时，才会出现该字段 */
+@property(nonatomic, copy) NSString *unionid;
+
+/** 错误码 */
+@property(nonatomic, assign) NSInteger errcode;
+
+/** 错误日志 */
+@property(nonatomic, copy) NSString *errmsg;
+
 /**
  *  交易状态
  */
 @property (copy, nonatomic) NSString *trade_state;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 + (instancetype)weChatModelWithDictionary:(NSDictionary *)dict;
 @end
 
+/************************************微信登录成功后获取的用户个人信息*****************************************/
+@interface DWWeChatProfileModel : NSObject
+
+/** 普通用户的标识，对当前开发者帐号唯一 */
+@property(nonatomic, copy) NSString *openid;
+
+/** 普通用户昵称 */
+@property(nonatomic, copy) NSString *nickname;
+
+/** 普通用户性别，1为男性，2为女性 */
+@property(nonatomic, assign) NSInteger sex;
+
+/** 普通用户个人资料填写的省份 */
+@property(nonatomic, copy) NSString *province;
+
+/** 普通用户个人资料填写的城市 */
+@property(nonatomic, copy) NSString *city;
+
+/** 国家，如中国为CN */
+@property(nonatomic, copy) NSString *country;
+
+/** 用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空 */
+@property(nonatomic, copy) NSString *headimgurl;
+
+/** 用户特权信息，json数组，如微信沃卡用户为（chinaunicom） */
+@property(nonatomic, strong) NSArray *privilege;
+
+/** 用户统一标识。针对一个微信开放平台帐号下的应用，同一用户的unionid是唯一的。 */
+@property(nonatomic, copy) NSString *unionid;
+
+/** 错误码 */
+@property(nonatomic, assign) NSInteger errcode;
+
+/** 错误日志 */
+@property(nonatomic, copy) NSString *errmsg;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
++ (instancetype)weChatProfileModelWithDictionary:(NSDictionary *)dict;
+
+@end
+
+/************************************字符串扩展*****************************************/
 @interface NSString (Extension)
 /** md5 一般加密 */
 + (NSString *)dw_md5String:(NSString *)string;

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DWWXPayDemo.xcodeproj">
+      location = "self:/Users/sihaiquanqiu/Desktop/DWWXSDK/DWWXSDKDemo/DWWXSDKDemo.xcodeproj">
    </FileRef>
 </Workspace>
