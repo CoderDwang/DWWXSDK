@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/dwanghello/DWWXSDK.git", :tag => s.version.to_s}
   s.source_files = "DWWXSDK", "DWWXSDK/**/*.{h,m}"
   s.frameworks   = "SystemConfiguration", "CoreTelephony", "Foundation", "Security", "CFNetwork", "UIKit"
-  s.libraries    = "libsqlite3.0", "libz", "libc++", "libcurses"
   s.dependency "WechatOpenSDK", "~> 1.7.7"
 
 end
