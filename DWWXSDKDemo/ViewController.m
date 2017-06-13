@@ -2,7 +2,7 @@
 //  ViewController.m
 //  DWWXPayDemo
 //
-//  Created by 四海全球 on 2017/6/12.
+//  Created by dwang.vip on 2017/6/12.
 //  Copyright © 2017年 dwang. All rights reserved.
 //
 
