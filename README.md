@@ -48,7 +48,10 @@
         //此方法是由于系统版本更新而出现的方法
         - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options{
         return [WXApi handleOpenURL:url delegate:[DWWXSDK wxSDK]];
-        }
+        }    
+- 图片示例
+![AppDelegate](https://github.com/dwanghello/DWWXSDK/blob/master/示例/AppDelegate.png)
+
 - 以下内容为本库中的一些方法的调用
     - 登录授权
             
@@ -100,4 +103,7 @@
             NSLog(@"%ld\n%@\n%@", operatingResult, error, errorMsg);
             }];
     - 分享image、音频、网页、小程序皆与分享纯文本内容相似
+    - DWWXSDK部分方法调用图片示例
+    ![AppDelegate](https://github.com/dwanghello/DWWXSDK/blob/master/示例/DWWXSDK部分方法调用示例.png)
+
 
