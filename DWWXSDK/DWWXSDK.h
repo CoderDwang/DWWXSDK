@@ -10,7 +10,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "WXApi.h"
+#import <WXApi.h>
 @class DWWeChatProfileModel;
 
 typedef enum : NSUInteger {

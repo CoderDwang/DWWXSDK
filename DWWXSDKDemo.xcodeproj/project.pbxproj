@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7686EFA18CDCB094D0E4915F /* libPods-DWWXSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B2AF1611B1C98B6449C63FD /* libPods-DWWXSDKDemo.a */; };
 		8F33E2B71EEFB78400DFFBD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */; };
 		8F33E2B81EEFB78400DFFBD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */; };
 		8F33E2B91EEFB78400DFFBD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A71EEFB78400DFFBD5 /* LaunchScreen.storyboard */; };
 		8F33E2BA1EEFB78400DFFBD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2A91EEFB78400DFFBD5 /* Main.storyboard */; };
 		8F33E2BC1EEFB78400DFFBD5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2AE1EEFB78400DFFBD5 /* Info.plist */; };
 		8F33E2BD1EEFB78400DFFBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2AF1EEFB78400DFFBD5 /* main.m */; };
-		8F33E2BE1EEFB78400DFFBD5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */; };
 		8F33E2BF1EEFB78400DFFBD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2B61EEFB78400DFFBD5 /* ViewController.m */; };
 		8F33E2C71EF00FF000DFFBD5 /* shareImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */; };
 		8F33E2CB1EF02E3D00DFFBD5 /* DWWXSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F33E2CA1EF02E3D00DFFBD5 /* DWWXSDK.m */; };
@@ -30,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B2AF1611B1C98B6449C63FD /* libPods-DWWXSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DWWXSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27799AAFE236F4966E5E3B42 /* Pods-DWWXSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DWWXSDKDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DWWXSDKDemo/Pods-DWWXSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		801BB2F6E1D85A42FF391473 /* Pods-DWWXSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DWWXSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DWWXSDKDemo/Pods-DWWXSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8F33E2A41EEFB78400DFFBD5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F33E2A51EEFB78400DFFBD5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8F33E2A61EEFB78400DFFBD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,10 +40,6 @@
 		8F33E2AA1EEFB78400DFFBD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F33E2AE1EEFB78400DFFBD5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F33E2AF1EEFB78400DFFBD5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		8F33E2B21EEFB78400DFFBD5 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		8F33E2B31EEFB78400DFFBD5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		8F33E2B41EEFB78400DFFBD5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		8F33E2B51EEFB78400DFFBD5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8F33E2B61EEFB78400DFFBD5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shareImage.jpg; sourceTree = "<group>"; };
@@ -69,18 +68,27 @@
 				8FA1BDF01EEE296500989ECA /* libc++.tbd in Frameworks */,
 				8FA1BDEC1EEE295400989ECA /* libcurses.tbd in Frameworks */,
 				8FA1BDF61EEE298400989ECA /* CoreTelephony.framework in Frameworks */,
-				8F33E2BE1EEFB78400DFFBD5 /* libWeChatSDK.a in Frameworks */,
 				8FA1BDF81EEE299B00989ECA /* SystemConfiguration.framework in Frameworks */,
 				8FA1BDF41EEE297800989ECA /* Foundation.framework in Frameworks */,
 				8FA1BDEE1EEE295B00989ECA /* Security.framework in Frameworks */,
 				8FA1BDEA1EEE294800989ECA /* CFNetwork.framework in Frameworks */,
 				8FA1BDE81EEE294200989ECA /* UIKit.framework in Frameworks */,
+				7686EFA18CDCB094D0E4915F /* libPods-DWWXSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AB62552D5EFDF8FC111191D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27799AAFE236F4966E5E3B42 /* Pods-DWWXSDKDemo.debug.xcconfig */,
+				801BB2F6E1D85A42FF391473 /* Pods-DWWXSDKDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8F33E2A31EEFB78400DFFBD5 /* DWWXSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,22 +101,10 @@
 				8F33E2C61EF00FF000DFFBD5 /* shareImage.jpg */,
 				8F33E2AE1EEFB78400DFFBD5 /* Info.plist */,
 				8F33E2AF1EEFB78400DFFBD5 /* main.m */,
-				8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */,
 				8F33E2B51EEFB78400DFFBD5 /* ViewController.h */,
 				8F33E2B61EEFB78400DFFBD5 /* ViewController.m */,
 			);
 			path = DWWXSDKDemo;
-			sourceTree = "<group>";
-		};
-		8F33E2B01EEFB78400DFFBD5 /* OpenSDK1.7.7 */ = {
-			isa = PBXGroup;
-			children = (
-				8F33E2B11EEFB78400DFFBD5 /* libWeChatSDK.a */,
-				8F33E2B21EEFB78400DFFBD5 /* WechatAuthSDK.h */,
-				8F33E2B31EEFB78400DFFBD5 /* WXApi.h */,
-				8F33E2B41EEFB78400DFFBD5 /* WXApiObject.h */,
-			);
-			path = OpenSDK1.7.7;
 			sourceTree = "<group>";
 		};
 		8F33E2C81EF02E3D00DFFBD5 /* DWWXSDK */ = {
@@ -126,6 +122,7 @@
 				8F33E2A31EEFB78400DFFBD5 /* DWWXSDKDemo */,
 				8FA1BDCD1EEE28FD00989ECA /* Products */,
 				8FA1BDE61EEE294200989ECA /* Frameworks */,
+				3AB62552D5EFDF8FC111191D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +147,7 @@
 				8FA1BDEB1EEE295400989ECA /* libcurses.tbd */,
 				8FA1BDE91EEE294800989ECA /* CFNetwork.framework */,
 				8FA1BDE71EEE294200989ECA /* UIKit.framework */,
+				1B2AF1611B1C98B6449C63FD /* libPods-DWWXSDKDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FA1BDE31EEE28FD00989ECA /* Build configuration list for PBXNativeTarget "DWWXSDKDemo" */;
 			buildPhases = (
+				A044C61573D93C29B45E8C56 /* [CP] Check Pods Manifest.lock */,
 				8FA1BDC81EEE28FD00989ECA /* Sources */,
 				8FA1BDC91EEE28FD00989ECA /* Frameworks */,
 				8FA1BDCA1EEE28FD00989ECA /* Resources */,
+				6A6A83C9FDDF6EAE1061C310 /* [CP] Embed Pods Frameworks */,
+				7FF3DAFF03CC2D58A117FAB6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,6 +223,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A6A83C9FDDF6EAE1061C310 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DWWXSDKDemo/Pods-DWWXSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FF3DAFF03CC2D58A117FAB6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DWWXSDKDemo/Pods-DWWXSDKDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A044C61573D93C29B45E8C56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8FA1BDC81EEE28FD00989ECA /* Sources */ = {
@@ -351,6 +400,7 @@
 		};
 		8FA1BDE41EEE28FD00989ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27799AAFE236F4966E5E3B42 /* Pods-DWWXSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 7T92Q33AK6;
 				INFOPLIST_FILE = "$(SRCROOT)/DWWXSDKDemo/Info.plist";
@@ -363,8 +413,9 @@
 				);
 				OTHER_LDFLAGS = (
 					"-Objc",
-					"-all_load",
+					"$(inherited)",
 				);
+				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.dwang.DWWXPayDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -372,6 +423,7 @@
 		};
 		8FA1BDE51EEE28FD00989ECA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801BB2F6E1D85A42FF391473 /* Pods-DWWXSDKDemo.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 7T92Q33AK6;
 				INFOPLIST_FILE = "$(SRCROOT)/DWWXSDKDemo/Info.plist";
@@ -384,8 +436,9 @@
 				);
 				OTHER_LDFLAGS = (
 					"-Objc",
-					"-all_load",
+					"$(inherited)",
 				);
+				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.dwang.DWWXPayDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
