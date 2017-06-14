@@ -35,6 +35,54 @@
         [DWWXSDK dw_registerApp:@"appid"];
         return YES;
 
+- 在info.plist中加入以下内容
+        
+        <dict>
+        <key>NSAllowsArbitraryLoads</key>
+	       <true/>
+	       <key>NSExceptionDomains</key>
+	       <dict>
+		<key>qq.com</key>
+		<dict>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+			<key>NSExceptionRequiresForwardSecrecy</key>
+			<false/>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+		</dict>
+	       </dict>
+        <array>
+	       <dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>vip.dwang.DWWXPayDemo</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>vip.dwang</string>
+		</array>
+	       </dict>
+	       <dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>weixin</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>appid</string>
+		</array>
+	       </dict>
+        </array>
+        <array>
+	       <string>wechat</string>
+	       <string>weixin</string>
+        </array>
+- info图片示例
+![info图片示例](https://github.com/dwanghello/DWWXSDK/blob/master/示例/info.png)
+
+
+
 - 重写以下三个方法,直接copy即可
     
         -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -49,10 +97,10 @@
         - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options{
         return [WXApi handleOpenURL:url delegate:[DWWXSDK wxSDK]];
         }    
-- 图片示例
+- AppDelegate图片示例
 ![AppDelegate](https://github.com/dwanghello/DWWXSDK/blob/master/示例/AppDelegate.png)
 
-- 以下内容为本库中的一些方法的调用
+- 以下内容为DWWXSDK中的一些方法的调用示例
     - 登录授权
             
             DWWXSDK *wxsdk = [DWWXSDK wxSDK];
