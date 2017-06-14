@@ -154,4 +154,7 @@
     - DWWXSDK部分方法调用图片示例
     ![AppDelegate](https://github.com/dwanghello/DWWXSDK/blob/master/示例/DWWXSDK部分方法调用示例.png)
 
+- 统计代码行数
+
+		find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -name "*.rss" ")" -print | xargs wc -l
 
