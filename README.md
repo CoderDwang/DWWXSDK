@@ -157,4 +157,8 @@
 - 统计代码行数
 
 		find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -name "*.rss" ")" -print | xargs wc -l
+- 其中 -name  "*.m" 就表示扩展名为.m的文件。同时要统计java文件和xml文件的命令分别是：
 
+		find . "(" -name "*.java"  ")" -print | xargs wc -l
+		以及：
+		find . "(" -name "*.xml"  ")" -print | xargs wc -l
