@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/dwanghello/DWWXSDK.git", :tag => s.version.to_s }
   s.source_files  = "DWWXSDK", "DWWXSDK/**/*.{h,m}"
   s.frameworks = "Security", "CoreTelephony", "UIKit", "SystemConfiguration", "Foundation", "CFNetwork"
-  s.libraries = "libz", "libsqlite3.0", "libc++"
+  s.libraries = "libz.tbd", "  libsqlite3.0.tbd", "libc++.tbd"
 end
