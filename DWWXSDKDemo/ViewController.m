@@ -28,7 +28,7 @@
     [wxsdk dw_wxLoginOAuthWXAppid:@"appid" wxSecret:@"秘钥" wxState:@"用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验" successBlock:^(DWWeChatProfileModel *profileModel) {
         NSLog(@"%@\n%@\n%@", profileModel.nickname, profileModel.headimgurl, profileModel.unionid);
     } errorBlock:^(NSError *error, NSInteger errcode, NSString *errmsg) {
-        NSLog(@"%@\n%ld\n%@", error, errcode, errmsg);
+        NSLog(@"%@\n%ld\n%@", error, (long)errcode, errmsg);
     }];
 }
 
@@ -38,7 +38,7 @@
     [wxsdk dw_wxLoginUserInfoWXAppid:@"appid" successBlock:^(DWWeChatProfileModel *profileModel) {
         NSLog(@"%@\n%@\n%@", profileModel.nickname, profileModel.headimgurl, profileModel.unionid);
     } errorBlock:^(NSInteger errcode, NSString *errmsg) {
-        NSLog(@"%ld\n%@", errcode, errmsg);
+        NSLog(@"%ld\n%@", (long)errcode, errmsg);
     }];
 }
 
@@ -48,7 +48,7 @@
     [wxsdk dw_wxLoginUpDataAccessTokenWXAppid:@"appid" successBlock:^(NSString *access_token, CGFloat expires_in, NSString *refresh_token, NSString *openid, NSString *scope) {
         NSLog(@"%@\n%f\n%@\n%@\n%@", access_token, expires_in, refresh_token, openid, scope);
     } errorBlock:^(NSInteger errcode, NSString *errmsg) {
-        NSLog(@"%ld\n%@", errcode, errmsg);
+        NSLog(@"%ld\n%@", (long)errcode, errmsg);
     }];
 }
 
@@ -59,7 +59,7 @@
     [wxsdk dw_wxRequestType:DWWXPayMoney xmlString:xmlString success:^(BOOL success) {
         NSLog(@"支付成功");
     } result:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
-        NSLog(@"错误码:%ld\n%@\n错误Log:%@", operatingResult, error, errorMsg);
+        NSLog(@"错误码:%ld\n%@\n错误Log:%@", (unsigned long)operatingResult, error, errorMsg);
     }];
 }
 
@@ -70,7 +70,7 @@
     [wxsdk dw_wxRequestType:DWWXOrderquery xmlString:xmlString success:^(BOOL success) {
         NSLog(@"此订单已支付成功");
     } result:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
-        NSLog(@"错误码:%ld\n%@\n错误Log:%@", operatingResult, error, errorMsg);
+        NSLog(@"错误码:%ld\n%@\n错误Log:%@", (unsigned long)operatingResult, error, errorMsg);
     }];
 }
 
@@ -80,7 +80,7 @@
     [wxsdk dw_wxShareMsg:@"测试分享文本" wxShareScene:DWWXShareSession wxShareSuccess:^(BOOL success) {
         NSLog(@"分享成功");
     } wxShareResultError:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
-        NSLog(@"%ld\n%@\n%@", operatingResult, error, errorMsg);
+        NSLog(@"%ld\n%@\n%@", (unsigned long)operatingResult, error, errorMsg);
     }];
 }
 
@@ -90,7 +90,7 @@
     [wxsdk dw_wxShareImage:[UIImage imageNamed:@"缩略图"] wxFilePath:[[NSBundle mainBundle] pathForResource:@"真实数据内容" ofType:@"jpg"] wxImageTitle:@"测试分享图片" wxImageDescription:@"测试分享图片" wxShareScene:DWWXShareTimeline wxShareSuccess:^(BOOL success) {
         NSLog(@"分享成功");
     } wxShareResultError:^(DWWXOperatingResult operatingResult, NSString *error, NSString *errorMsg) {
-        NSLog(@"%ld\n%@\n%@", operatingResult, error, errorMsg);
+        NSLog(@"%ld\n%@\n%@", (unsigned long)operatingResult, error, errorMsg);
     }];
 }
 
