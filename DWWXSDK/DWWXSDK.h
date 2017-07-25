@@ -268,10 +268,11 @@ typedef void (^DWShareSuccess)(BOOL success);
  @param wxMiniTitle 标题
  @param wxMiniDescription 描述
  @param wxMiniImage 缩略图
+ @param wxHDImageData 6.5.9及以上版本微信客户端小程序类型分享使用大图卡片样式
  @param wxShareSuccess 分享成功的回调
  @param wxShareResultError 分享失败的回调
  */
-- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
+- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxHDImageData:(NSData *)wxHDImageData wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError;
 
 /** 退出微信登录后需要清除UserDefaults中存储的内容 */
 + (void)dw_removeAllWXLoginUserDefaultsObjects;

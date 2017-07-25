@@ -332,7 +332,7 @@
 }
 
 #pragma mark - 分享小程序至微信好友
-- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
+- (void)dw_wxShareMiniProgramOBJ:(NSString *)wxWebPageUString wxMiniUserName:(NSString *)wxMiniUserName wxMiniPath:(NSString *)wxMiniPath wxMiniTitle:(NSString *)wxMiniTitle wxMiniDescription:(NSString *)wxMiniDescription wxMiniImage:(UIImage *)wxMiniImage wxHDImageData:(NSData *)wxHDImageData wxShareSuccess:(DWShareSuccess)wxShareSuccess wxShareResultError:(DWWXOperatingErrorResult)wxShareResultError {
     WXMediaMessage *mediaMsg = [WXMediaMessage message];
     mediaMsg.title = wxMiniTitle;
     mediaMsg.description = wxMiniDescription;
@@ -341,6 +341,7 @@
     miniOBJ.webpageUrl = wxWebPageUString;
     miniOBJ.userName = wxMiniUserName;
     miniOBJ.path = wxMiniPath;
+    miniOBJ.hdImageData = wxHDImageData;
     mediaMsg.mediaObject = miniOBJ;
     SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
     msgReq.bText = NO;
@@ -556,7 +557,6 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DWWXLoginOpenid"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 @end
 

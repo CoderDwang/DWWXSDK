@@ -2,7 +2,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/dwanghello/DWWXSDK.svg)](https://github.com/asiosldh/DWWXSDK/forkgazers)
 # DWWXSDK
 ### 此工程基于Xcode8.3.3创建，低版本Xcode打开可能会无法使用
-### *此文件基于<strong>微信SDK 1.7.7</strong>生产*
 
 ---
 
@@ -13,10 +12,10 @@
 ##### *e-mail:dwang.hello@outlook.com*
 
 ---
-如果使用了pod导入了微信的SDK，则可直接将[本文件](https://github.com/dwanghello/DWWXSDK/tree/master/DWWXSDK)导入到工程中使用,如果未使用pod导入可以参考[微信官方SDK1.7.7手动导入方法](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN),将微信SDK1.7.7导入完成后,将本文件引入到工程中即可使用
+如果使用了pod导入了微信的SDK，则可直接将[本文件](https://github.com/dwanghello/DWWXSDK/tree/master/DWWXSDK)导入到工程中使用,如果未使用pod导入可以参考[微信官方SDK手动导入方法](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN),将微信SDK导入完成后,将本文件引入到工程中即可使用
 
 ---
-#### 以下内容皆认为是已将微信SDK1.7.7与本文件成功集成到工程中
+#### 以下内容皆认为是已将微信SDK与本文件成功集成到工程中
 - 检查是否安装微信
 
         NSLog(@"是否安装微信:%d", [DWWXSDK dw_isWXAppInstalled]);
@@ -162,3 +161,5 @@
 		find . "(" -name "*.java"  ")" -print | xargs wc -l
 		以及：
 		find . "(" -name "*.xml"  ")" -print | xargs wc -l
+
+

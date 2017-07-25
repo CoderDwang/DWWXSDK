@@ -1,11 +1,11 @@
 PODS:
-  - WechatOpenSDK (1.7.7)
+  - WechatOpenSDK (1.7.8)
 
 DEPENDENCIES:
   - WechatOpenSDK (~> 1.7.7)
 
 SPEC CHECKSUMS:
-  WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
+  WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
 
 PODFILE CHECKSUM: 1c60e1306fa610e6129c7ad89e911fbce2fa21d5
 

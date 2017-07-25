@@ -15,15 +15,15 @@
 		0D03ECC708AFBB6082A158024E77D7CE /* Pods-DWWXSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DWWXSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		2D93100C019586B7FCDC6F37ABAEA54E /* libPods-DWWXSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-DWWXSDKDemo.a"; path = "libPods-DWWXSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD4FC22C7E9076F81491AE5E3898436 /* Pods-DWWXSDKDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DWWXSDKDemo-dummy.m"; sourceTree = "<group>"; };
+		38FF1D1D1803C0A53DC6187EC0D5247F /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.7.8/libWeChatSDK.a; sourceTree = "<group>"; };
 		41BB4B227847C830FBCD400A4884248E /* Pods-DWWXSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DWWXSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		4A24242BAFB5C9295AAF17DABA358B2D /* Pods-DWWXSDKDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DWWXSDKDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4EDA7D4729938E21740FAB0B2846ED61 /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.7.7/WXApiObject.h; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		835747FB8E7FDD474A87E9C7E33DB5E6 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = OpenSDK1.7.7/WXApi.h; sourceTree = "<group>"; };
-		88BBC081BB99EAA08AC7EFE93A2C41DB /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = OpenSDK1.7.7/WechatAuthSDK.h; sourceTree = "<group>"; };
-		90BEDCE0279CE7085CCE800BBF96508E /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.7.7/libWeChatSDK.a; sourceTree = "<group>"; };
+		67F0EE34583F0302771B51EA2F1F496E /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.7.8/WXApiObject.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B07FC7089D98EBFC3B8317CA9C4DB0DC /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = OpenSDK1.7.8/WechatAuthSDK.h; sourceTree = "<group>"; };
 		C25984EE8D80380F47714C1DB7495AA7 /* Pods-DWWXSDKDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DWWXSDKDemo-resources.sh"; sourceTree = "<group>"; };
+		DAF3CC6B0BEA211B1193E827C69EAD28 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = OpenSDK1.7.8/WXApi.h; sourceTree = "<group>"; };
 		DC14751118EAE213383699862DB2BE6E /* Pods-DWWXSDKDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DWWXSDKDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		EA715041776812D9F9CAE26D24F81C95 /* Pods-DWWXSDKDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DWWXSDKDemo-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,26 +40,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12C0837DF0ABE3BA45F71A521A976BCB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				90BEDCE0279CE7085CCE800BBF96508E /* libWeChatSDK.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1C0428BB4E369AD3AC119E64360B7336 /* WechatOpenSDK */ = {
-			isa = PBXGroup;
-			children = (
-				88BBC081BB99EAA08AC7EFE93A2C41DB /* WechatAuthSDK.h */,
-				835747FB8E7FDD474A87E9C7E33DB5E6 /* WXApi.h */,
-				4EDA7D4729938E21740FAB0B2846ED61 /* WXApiObject.h */,
-				12C0837DF0ABE3BA45F71A521A976BCB /* Frameworks */,
-			);
-			name = WechatOpenSDK;
-			path = WechatOpenSDK;
-			sourceTree = "<group>";
-		};
 		671D57C1D1EA0C9E6268B3274734689F /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +66,7 @@
 		7ADA45F435BB210C822629C0D9B54295 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C0428BB4E369AD3AC119E64360B7336 /* WechatOpenSDK */,
+				DBC36B9FCA69B459F3290EF4F4D65F3C /* WechatOpenSDK */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -124,6 +104,26 @@
 				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		D72B82584291F30383CE0E8EB710C3D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38FF1D1D1803C0A53DC6187EC0D5247F /* libWeChatSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBC36B9FCA69B459F3290EF4F4D65F3C /* WechatOpenSDK */ = {
+			isa = PBXGroup;
+			children = (
+				B07FC7089D98EBFC3B8317CA9C4DB0DC /* WechatAuthSDK.h */,
+				DAF3CC6B0BEA211B1193E827C69EAD28 /* WXApi.h */,
+				67F0EE34583F0302771B51EA2F1F496E /* WXApiObject.h */,
+				D72B82584291F30383CE0E8EB710C3D3 /* Frameworks */,
+			);
+			name = WechatOpenSDK;
+			path = WechatOpenSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
