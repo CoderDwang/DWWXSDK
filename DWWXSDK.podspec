@@ -10,5 +10,6 @@ Pod::Spec.new do |s|
   s.author             = { "dwanghello" => "dwang.hello@outlook.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/dwanghello/DWWXSDK.git", :tag => s.version.to_s }
+  s.dependency "WechatOpenSDK"
   s.source_files  = "DWWXSDK", "DWWXSDK/**/*.{h,m}"
 end
