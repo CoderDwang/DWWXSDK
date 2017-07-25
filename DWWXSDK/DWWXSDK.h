@@ -6,9 +6,6 @@
 //  Copyright © 2017年 dwang. All rights reserved.
 
 
-/*****************************此文件基于微信SDK 1.7.7版本******************************/
-
-
 #import <Foundation/Foundation.h>
 #import <WXApi.h>
 @class DWWeChatProfileModel;
