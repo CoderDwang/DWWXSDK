@@ -9,7 +9,7 @@
 #### *使用中如果遇到什么问题可以联系我*
 ##### *QQ群:577506623*
 ![QQ群](https://github.com/dwanghello/DWTransform/blob/master/QQ群.png)
-##### *e-mail:dwang.hello@outlook.com*
+##### *e-mail:coderdwang@outlook.com*
 
 ---
 如果使用了pod导入了微信的SDK，则可直接将[本文件](https://github.com/dwanghello/DWWXSDK/tree/master/DWWXSDK)导入到工程中使用,如果未使用pod导入可以参考[微信官方SDK手动导入方法](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN),将微信SDK导入完成后,将本文件引入到工程中即可使用
