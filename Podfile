@@ -1,3 +1,3 @@
 target 'DWWXSDKDemo' do
-pod 'WechatOpenSDK', "~> 1.7.7"
+pod 'WechatOpenSDK', '~> 1.8.3'
 end

@@ -40,8 +40,9 @@
 
 @end
 
-#define WXPayURLString @"https://api.mch.weixin.qq.com/pay/unifiedorder"
-#define WXQueryOrderURLString @"https://api.mch.weixin.qq.com/pay/orderquery"
+static NSString * const WXPayURLString = @"https://api.mch.weixin.qq.com/pay/unifiedorder";
+
+static NSString * const WXQueryOrderURLString = @"https://api.mch.weixin.qq.com/pay/orderquery";
 
 @implementation DWWXSDK
 
